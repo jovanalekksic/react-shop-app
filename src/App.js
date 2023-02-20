@@ -28,11 +28,14 @@ function App() {
     },
   ];
 
-  const prom=<h1>Cao svima!</h1>;
+  function addProduct(){
+    console.log("Nalazimo se u komponenti App");
+  }
+
   return (
     <div className="App">
       <NavBar></NavBar>
-      <Products products={products}/>
+      <Products products={products} onAdd={addProduct}/>
     </div>
   );
 }
