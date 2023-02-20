@@ -7,11 +7,11 @@ function NavBar({cartNum}) {
 
   return (
     <div className='navBar'>
-        <a>My Store</a>
-        <div className="cart-items">
+        <a href='/'>My Store</a>
+        <a href="/cart" className="cart-items">
             <BsFillCartPlusFill/>
             <p className="cart-num">{cartNum}</p>
-        </div>
+        </a>
     </div>
   )
 }

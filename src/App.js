@@ -2,6 +2,8 @@ import NavBar from './components/NavBar';
 import './App.css';
 import Products from './components/Products';
 import { useState } from 'react';
+import { Cart } from './components/Cart';
+import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
 
 
 function App() {
@@ -41,10 +43,18 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <BrowserRouter className="App">
+
       <NavBar cartNum={cartNum}></NavBar>
-      <Products products={products} onAdd={addProduct}/>
-    </div>
+
+      <Routes>
+        <Route path='/' element={<Products products={products} onAdd={addProduct}/>} />
+        <Route path='/cart' element={<Cart/>} />
+      </Routes>
+      
+      
+
+    </BrowserRouter>
   );
 }
 
