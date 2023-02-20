@@ -1,9 +1,14 @@
 import NavBar from './components/NavBar';
 import './App.css';
-import Products from './components/Products'
+import Products from './components/Products';
+import { useState } from 'react';
+
 
 function App() {
 
+ // let cartNum=0;
+  // const [first, setfirst] = useState(second);
+  const [cartNum, setCartNum]=useState(0);
   const products = [
     {
       id: 1,
@@ -28,13 +33,16 @@ function App() {
     },
   ];
 
-  function addProduct(){
-    console.log("Nalazimo se u komponenti App");
+  function addProduct(title){
+    console.log("Dodat je proizvod: "+title);
+    
+    console.log(cartNum);
+    setCartNum(cartNum+1);
   }
 
   return (
     <div className="App">
-      <NavBar></NavBar>
+      <NavBar cartNum={cartNum}></NavBar>
       <Products products={products} onAdd={addProduct}/>
     </div>
   );
