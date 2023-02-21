@@ -9,9 +9,12 @@ function OneProduct({ product, onAdd, inCart }) {
   // }
 
   return (
-    <div className="card" style={{ margin: 10, borderStyle: "dotted" }}>
+    <div
+      className={inCart === 1 ? "card" : "card-cart"}
+      style={{ margin: 10, borderStyle: "dotted" }}
+    >
       <img
-        className="card-img-top"
+        className={inCart === 1 ? "card-img-top" : "card-img-left"}
         src="https:/picsum.photos/200"
         alt="NEka slika"
       />
@@ -22,7 +25,10 @@ function OneProduct({ product, onAdd, inCart }) {
 
       {inCart === 1 ? (
         <>
-          <button className="btn" onClick={() => onAdd(product.title)}>
+          <button
+            className="btn"
+            onClick={() => onAdd(product.title, product.id)}
+          >
             <BsPlusLg />
           </button>
           <button className="btn">

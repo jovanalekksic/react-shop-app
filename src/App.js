@@ -11,7 +11,8 @@ function App() {
  // let cartNum=0;
   // const [first, setfirst] = useState(second);
   const [cartNum, setCartNum]=useState(0);
-  const products = [
+  const [cartProducts, setCartProducts]=useState([]);
+  const [products,setProducts] = useState([
     {
       id: 1,
       title: "Chocolate",
@@ -33,13 +34,23 @@ function App() {
         "Ice cream is a sweetened frozen food typically eaten as a snack or dessert.",
       amount: 0,
     },
-  ];
+  ]);
+  
+  function refreshCart(){
+    let newProducts=products.filter((prod)=>prod.amount>0);
+    setCartProducts(newProducts);
+  }
 
-  function addProduct(title){
+  function addProduct(title, id){
     console.log("Dodat je proizvod: "+title);
-    
-    console.log(cartNum);
     setCartNum(cartNum+1);
+    products.forEach((prod)=>{
+      if(prod.id===id){
+        prod.amount++;
+      }
+    });
+    refreshCart();
+
   }
 
   return (
@@ -49,7 +60,7 @@ function App() {
 
       <Routes>
         <Route path='/' element={<Products products={products} onAdd={addProduct}/>} />
-        <Route path='/cart' element={<Cart products={products} />} />
+        <Route path='/cart' element={<Cart products={cartProducts} />} />
       </Routes>
       
       
