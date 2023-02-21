@@ -49,7 +49,7 @@ function App() {
 
       <Routes>
         <Route path='/' element={<Products products={products} onAdd={addProduct}/>} />
-        <Route path='/cart' element={<Cart/>} />
+        <Route path='/cart' element={<Cart products={products} />} />
       </Routes>
       
       
